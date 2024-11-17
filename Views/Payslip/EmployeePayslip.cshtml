@@ -1,0 +1,191 @@
+﻿@{
+    ViewBag.Title = "Payslip";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h4>Payslip</h4>
+        <div>
+            <form method="get" action="@Url.Action("DownloadPayslip", "Payslip")">
+                <select class="form-select d-inline-block w-auto ms-2">
+                    <option selected>Aug 2024</option>
+                    <option>Jul 2024</option>
+                    <option>Jun 2024</option>
+                </select>
+                <button type="submit" class="btn btn-primary">Payslip</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header" id="header">Earnings</div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Description</th>
+                                <th>Amount ($)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>BASIC</td>
+                                <td>260.27</td>
+                            </tr>
+                            <tr>
+                                <td>HRA</td>
+                                <td>130.14</td>
+                            </tr>
+                            <tr>
+                                <td>SPECIAL ALLOWANCE</td>
+                                <td>130.14</td>
+                            </tr>
+                            <tr class="total">
+                                <th>Total</th>
+                                <th>520.54</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header" id="header">Deductions</div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Description</th>
+                                <th>Amount ($)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>PF</td>
+                                <td>149,400.00</td> <!-- Converted to INR -->
+                            </tr>
+                            <tr>
+                                <td>PROF TAX</td>
+                                <td>16,600.00</td> <!-- Converted to INR -->
+                            </tr>
+                            <tr class="total">
+                                <th>Total</th>
+                                <th>166,000.00</th> <!-- Converted total to INR -->
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header" id="header">Employee Details</div>
+                <div class="card-body employee-details">
+                    <div class="employee-details">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <strong>Employee No:</strong>
+                                <p>1183</p>
+                            </div>
+                            <div class="col-md-6">
+                                <strong>Name:</strong>
+                                <p> John Doe</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <strong>Bank:</strong>
+                                <p>USA Bank</p>
+                            </div>
+                            <div class="col-md-6">
+                                <strong>Bank Account No:</strong>
+                                <p>147852365479</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <strong>Joining Date:</strong>
+                                <p>06 Jan 2023</p>
+                            </div>
+                            <div class="col-md-6">
+                                <strong>PF No:</strong>
+                                <p>USA/UUO/52863110/222/008526</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-6 text-end">
+            <h5 class="text-green">Net Pay for Aug 2024</h5>
+            <h4 class="text-green">$496.54</h4>
+            <p>Rupees Forty-One Thousand Three Hundred Seventy-Eight Only</p>
+        </div>
+    </div>
+</div>
+
+<style>
+    .total {
+        background-color: #cce5ff;
+    }
+
+    thead {
+        background-color: #cce5ff;
+        font-size: 15px;
+        font-family: serif;
+    }
+
+    tbody {
+        font-size: 15px;
+        font-family: serif;
+    }
+
+    #header {
+        font-weight: 500;
+        background-color: #d5e0ec;
+    }
+
+    .card {
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+
+    .btn-primary {
+        background-color: #0d6efd;
+        border: none;
+    }
+
+    .btn-outline-secondary {
+        color: #0d6efd;
+        border-color: #0d6efd;
+    }
+
+    .employee-details {
+        background-color: #fffbea;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+
+        .employee-details p {
+            margin-bottom: 5px;
+        }
+
+    .text-green {
+        color: #28a745;
+    }
+</style>

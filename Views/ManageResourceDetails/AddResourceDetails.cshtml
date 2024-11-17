@@ -1,0 +1,256 @@
+﻿@model BusinessModel.EmployeeProfileDetails
+
+@{
+    ViewBag.Title = "Configure Resource";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<div class="container mt-5">
+    <form asp-action="AddResourceDetails" asp-controller="ManageResourceDetails" method="post" enctype="multipart/form-data">
+        <div>
+            <!-- Personal Details Section -->
+            <div class="card shadow-sm border-0 mb-4">
+                <div class="card-header text-white">
+                    <p class="mb-0">
+                        <i class="fa fa-user-circle"></i>
+                        <span>Configure Personal Details</span>
+                    </p>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <input type="text" placeholder="Resource Name" asp-for="ResourceName" id="ResourceName" class="form-control" />
+                        </div>
+                        <div class="col-md-4">
+                            <input type="email" placeholder="Email" asp-for="Email" id="Email" class="form-control" />
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" placeholder="Mobile" asp-for="Mobile" id="Mobile" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <input type="text" placeholder="Pincode" asp-for="Pincode" id="Pincode" class="form-control" />
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" placeholder="City" asp-for="City" id="City" class="form-control" />
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" placeholder="State" asp-for="state" id="state" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-md-12">
+                            <textarea asp-for="Description" id="Description" class="form-control rounded" rows="2" placeholder="Description"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row for Organization Details and Login Credentials -->
+            <div class="row">
+                <!-- Organization Details Section -->
+                <div class="col-md-8 OrgCls">
+                    <div class="card shadow-sm border-0 mb-4 divShadow">
+                        <div class="card-header text-white">
+                            <p class="mb-0">
+                                <i class="fa fa-building"></i>
+                                <span>Configure Employment Details</span>
+                            </p>
+                        </div>
+                        <div class="card-body">
+                            <div class="row mb-3">
+
+                                <div class="col-md-2 d-flex justify-content-center align-items-center">
+                                    <div>
+                                    <strong>Profile Image:</strong><br />
+                                    <img id="profileImage" class="profileimg" src="~/man.png" alt="Profile Image" class="img-thumbnail rounded-circle"/>
+                                    <input type="file" id="fileInput"  name="ProfileImage" accept="image/*" />
+                                    </div>
+                                </div>
+
+                                <!-- Department and Employee Code on the first row -->
+                                <div class="col-md-10">
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <select asp-for="DepartmentId" asp-items="@(new SelectList(ViewBag.Department, "DepartmentId", "DepartmentName"))" class="form-control drp">
+                                                    <option value="0">Select Department</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="text" id="EmployeeCode" asp-for="EmployeeCode" placeholder="Employee Code" class="form-control" />
+                                        </div>
+                                    </div>
+
+                                    <!-- Reporting Manager and Roles on the second row -->
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <select class="form-control drp" asp-for="ReportingManager" asp-items="@(new SelectList(ViewBag.ReportingManagers, "ReportingManager", "ReportingManagerName"))">
+                                                <option value="0" class="form-control">Reporting Manager</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <select class="form-control drp" asp-for="RoleId" asp-items="@(new SelectList(ViewBag.Roles, "RoleId", "RoleName"))">
+                                                <option valu e="0">Select Roles</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Login Credentials Section -->
+                <div class="col-md-4">
+                    <div class="card shadow-sm border-0 mb-4 LoginCls">
+                        <div class="card-header text-white">
+                            <p class="mb-0">
+                                <i class="fa fa-lock"></i>
+                                <span>Configure Login Credentials</span>
+                            </p>
+                        </div>
+                        <div class="card-body">
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <input type="text" id="LoginName" placeholder="Login Name" name="LoginName" asp-for="LoginName" class="form-control" />
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="password" id="Password" placeholder="Password" name="Password" asp-for="Password" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="text-right">
+                <a asp-controller="ManageResourceDetails" asp-action="ManageResource" class="btn btn-secondary btn-sm">Back</a>
+                <button type="submit" class="btn btn-primary btn-sm" id="saveResourceBtn">Save</button>
+                <button type="button" id="btnClear" class="btn btn-danger btn-sm">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="resourceModal" tabindex="-1" aria-labelledby="resourceModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="resourceModalLabel">Resource Details</h5>
+            </div>
+            <div class="modal-body">
+                <p id="modalMessage">Resource has been configured successfully!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+
+    #fileInput
+    {
+        display : none;
+    }
+
+    .profileimg {
+        max-width: 130px;
+        max-height: 99px;
+        cursor: pointer;
+    }
+
+    .divShadow {
+        height: 92%;
+    }
+
+    .container {
+        margin-top: -20px;
+    }
+
+    .card-header {
+        font-size: 15px;
+        font-weight: 500;
+        background: #275e8c;
+    }
+
+    .form-control {
+        border: 1px solid #ced4da;
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .drp {
+        height: 43px;
+    }
+
+    .LoginCls {
+        height: 250px;
+    }
+</style>
+
+<script>
+
+    $('#btnClear').click(function () {
+        $('#ResourceName').val('');
+        $('#Email').val('');
+        $('#Mobile').val('');
+        $('#Pincode').val('');
+        $('#City').val('');
+        $('#State').val('');
+        $('#Description').val('');
+        $('#LoginName').val('');
+        $('#password').val('');
+    });
+
+    $('#profileImage').on('click', function () {
+        $('#fileInput').click();
+    });
+
+    // Update the image preview after selecting a file
+    $('#fileInput').on('change', function () {
+        const file = this.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                $('#profileImage').attr('src', e.target.result); // Update image source
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    $('#saveResourceBtn').on('click', function (e) {
+        debugger;
+        e.preventDefault(); // Prevent the default form submission
+
+        // Create a FormData object from the form element
+        var formData = new FormData($('form')[0]);
+
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("AddResourceDetails", "ManageResourceDetails")',
+            data: formData,
+            contentType: false, // Important: Prevent jQuery from overriding content type
+            processData: false, // Important: Prevent jQuery from transforming the data into a query string
+            success: function (response) {
+                // Show the modal
+                $('#resourceModal').modal('show');
+
+                // Auto-close the modal after 2 seconds and redirect
+                setTimeout(function () {
+                    $('#resourceModal').modal('hide');
+                    window.location.href = '@Url.Action("ManageResource", "ManageResourceDetails")';
+                }, 3000);
+            },
+            error: function (xhr, status, error) {
+                alert('An error occurred while saving data: ' + error);
+            }
+        });
+    });
+
+</script>

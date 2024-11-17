@@ -1,0 +1,485 @@
+{
+  "Files": [
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\EmployeeNexus.bundle.scp.css",
+      "PackagePath": "staticwebassets\\EmployeeNexus.bundle.scp.css"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\TaskandTimeSheet.png",
+      "PackagePath": "staticwebassets\\TaskandTimeSheet.png"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\alarm-clock.png",
+      "PackagePath": "staticwebassets\\alarm-clock.png"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\alert.png",
+      "PackagePath": "staticwebassets\\alert.png"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\calendar.png",
+      "PackagePath": "staticwebassets\\calendar.png"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\chatbotasiist.avif",
+      "PackagePath": "staticwebassets\\chatbotasiist.avif"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\checked.png",
+      "PackagePath": "staticwebassets\\checked.png"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\copywriter-digital-avatar-generative-ai_934475-9260.jpg",
+      "PackagePath": "staticwebassets\\copywriter-digital-avatar-generative-ai_934475-9260.jpg"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\create.jpeg",
+      "PackagePath": "staticwebassets\\create.jpeg"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\customer-support (1).png",
+      "PackagePath": "staticwebassets\\customer-support (1).png"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\customer-support.png",
+      "PackagePath": "staticwebassets\\customer-support.png"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\dusbin.jpg",
+      "PackagePath": "staticwebassets\\dusbin.jpg"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\files\\SalarySleep.pdf",
+      "PackagePath": "staticwebassets\\files\\SalarySleep.pdf"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\headphone.png",
+      "PackagePath": "staticwebassets\\headphone.png"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\hourglass.png",
+      "PackagePath": "staticwebassets\\hourglass.png"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\hr.png",
+      "PackagePath": "staticwebassets\\hr.png"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\icons8-male-user-48.png",
+      "PackagePath": "staticwebassets\\icons8-male-user-48.png"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\images\\13305c39-7be4-4dc4-bbf1-bba93739ac64_PHOTO.png",
+      "PackagePath": "staticwebassets\\images\\13305c39-7be4-4dc4-bbf1-bba93739ac64_PHOTO.png"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\images\\26e8c102-d22c-4470-b05b-b5c7d9f88551_manishjujum.png",
+      "PackagePath": "staticwebassets\\images\\26e8c102-d22c-4470-b05b-b5c7d9f88551_manishjujum.png"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\images\\2c76bfe1-4998-4b38-a006-af65ea002a87_manishjujum.png",
+      "PackagePath": "staticwebassets\\images\\2c76bfe1-4998-4b38-a006-af65ea002a87_manishjujum.png"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\images\\2ddd4d73-6d8e-4e4c-b2dc-e9f2827d9450_manishjujum.png",
+      "PackagePath": "staticwebassets\\images\\2ddd4d73-6d8e-4e4c-b2dc-e9f2827d9450_manishjujum.png"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\images\\397da8fb-929a-429e-b733-e3a98498daa0_PHOTO.png",
+      "PackagePath": "staticwebassets\\images\\397da8fb-929a-429e-b733-e3a98498daa0_PHOTO.png"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\images\\3d569e03-73e8-4d4d-a829-7a159b1e3b05_chatbotasiist.jpg",
+      "PackagePath": "staticwebassets\\images\\3d569e03-73e8-4d4d-a829-7a159b1e3b05_chatbotasiist.jpg"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\images\\4a5ed771-fcf8-49fa-9d18-4d83a5fc933b_manishjujum.png",
+      "PackagePath": "staticwebassets\\images\\4a5ed771-fcf8-49fa-9d18-4d83a5fc933b_manishjujum.png"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\images\\4c77d189-e18f-4ef7-b210-7d5f639fd9bd_PHOTO.png",
+      "PackagePath": "staticwebassets\\images\\4c77d189-e18f-4ef7-b210-7d5f639fd9bd_PHOTO.png"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\images\\73773b82-9f82-43db-b5bc-7e55e468d804_PHOTO.png",
+      "PackagePath": "staticwebassets\\images\\73773b82-9f82-43db-b5bc-7e55e468d804_PHOTO.png"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\images\\8609ef5b-4a42-4452-921a-2e905d51cd8b_PHOTO.png",
+      "PackagePath": "staticwebassets\\images\\8609ef5b-4a42-4452-921a-2e905d51cd8b_PHOTO.png"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\images\\8d33fa24-a065-44eb-893c-c95812d8faf7_PHOTO.png",
+      "PackagePath": "staticwebassets\\images\\8d33fa24-a065-44eb-893c-c95812d8faf7_PHOTO.png"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\images\\92168f80-45fc-461c-af29-25be91fd8380_manishjujum.png",
+      "PackagePath": "staticwebassets\\images\\92168f80-45fc-461c-af29-25be91fd8380_manishjujum.png"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\images\\92a80e7d-30c4-436b-9e81-b3c1bf1e9e3e_manishjujum.png",
+      "PackagePath": "staticwebassets\\images\\92a80e7d-30c4-436b-9e81-b3c1bf1e9e3e_manishjujum.png"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\images\\9516da2b-9801-49e5-b8e3-4fa013cb35bd_manishjujum.png",
+      "PackagePath": "staticwebassets\\images\\9516da2b-9801-49e5-b8e3-4fa013cb35bd_manishjujum.png"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\images\\98e11ec5-21a2-455e-aab8-588838624186_chatbotasiist.jpg",
+      "PackagePath": "staticwebassets\\images\\98e11ec5-21a2-455e-aab8-588838624186_chatbotasiist.jpg"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\images\\PHOTO.png",
+      "PackagePath": "staticwebassets\\images\\PHOTO.png"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\images\\a0e262aa-2947-4081-b326-750701779156_copywriter-digital-avatar-generative-ai_934475-9260.jpg",
+      "PackagePath": "staticwebassets\\images\\a0e262aa-2947-4081-b326-750701779156_copywriter-digital-avatar-generative-ai_934475-9260.jpg"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\images\\afc6c6d6-6f13-449f-a76b-a63c7ff2d988_PHOTO.png",
+      "PackagePath": "staticwebassets\\images\\afc6c6d6-6f13-449f-a76b-a63c7ff2d988_PHOTO.png"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\images\\b2bc76ed-6617-4561-a325-627b26258090_PHOTO.png",
+      "PackagePath": "staticwebassets\\images\\b2bc76ed-6617-4561-a325-627b26258090_PHOTO.png"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\images\\b613ef0e-1d4d-4503-9a93-a971b7763535_manishjujum.png",
+      "PackagePath": "staticwebassets\\images\\b613ef0e-1d4d-4503-9a93-a971b7763535_manishjujum.png"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\images\\ba28cc08-d1e0-49fc-94dd-10f4a279398d_manishjujum.png",
+      "PackagePath": "staticwebassets\\images\\ba28cc08-d1e0-49fc-94dd-10f4a279398d_manishjujum.png"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\images\\cca196fd-73a7-41e0-b0e9-6e2e55b83c1c_PHOTO.png",
+      "PackagePath": "staticwebassets\\images\\cca196fd-73a7-41e0-b0e9-6e2e55b83c1c_PHOTO.png"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\images\\d7b89052-c625-48d4-bec3-24405702f225_manishjujum.png",
+      "PackagePath": "staticwebassets\\images\\d7b89052-c625-48d4-bec3-24405702f225_manishjujum.png"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\images\\db9798df-11e1-455e-a758-c9d93cce9939_manishjujum.png",
+      "PackagePath": "staticwebassets\\images\\db9798df-11e1-455e-a758-c9d93cce9939_manishjujum.png"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\images\\e43ae99c-e38a-4353-baa7-72efa3d201f7_copywriter-digital-avatar-generative-ai_934475-9260.jpg",
+      "PackagePath": "staticwebassets\\images\\e43ae99c-e38a-4353-baa7-72efa3d201f7_copywriter-digital-avatar-generative-ai_934475-9260.jpg"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\images\\fa9c0a53-3467-4e9f-b8ef-fc04376c9446_manishjujum.png",
+      "PackagePath": "staticwebassets\\images\\fa9c0a53-3467-4e9f-b8ef-fc04376c9446_manishjujum.png"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\images\\manishjujum.jpg",
+      "PackagePath": "staticwebassets\\images\\manishjujum.jpg"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\letter-h.png",
+      "PackagePath": "staticwebassets\\letter-h.png"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\letter-m.png",
+      "PackagePath": "staticwebassets\\letter-m.png"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\letter-r.png",
+      "PackagePath": "staticwebassets\\letter-r.png"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\letter-s.png",
+      "PackagePath": "staticwebassets\\letter-s.png"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\letter-t.png",
+      "PackagePath": "staticwebassets\\letter-t.png"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\man.png",
+      "PackagePath": "staticwebassets\\man.png"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\office boy.jpg",
+      "PackagePath": "staticwebassets\\office boy.jpg"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\pencilSquare.jpg",
+      "PackagePath": "staticwebassets\\pencilSquare.jpg"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\plus-sign-in-a-black-circle.png",
+      "PackagePath": "staticwebassets\\plus-sign-in-a-black-circle.png"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\plus.png",
+      "PackagePath": "staticwebassets\\plus.png"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\send.png",
+      "PackagePath": "staticwebassets\\send.png"
+    },
+    {
+      "Id": "E:\\Technical files\\Git Hub Projects\\EmployeeNexus\\EmployeeNexus\\wwwroot\\timesheet.png",
+      "PackagePath": "staticwebassets\\timesheet.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.EmployeeNexus.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.EmployeeNexus.props",
+      "PackagePath": "build\\EmployeeNexus.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.EmployeeNexus.props",
+      "PackagePath": "buildMultiTargeting\\EmployeeNexus.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.EmployeeNexus.props",
+      "PackagePath": "buildTransitive\\EmployeeNexus.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

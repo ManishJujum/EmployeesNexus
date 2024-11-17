@@ -1,0 +1,445 @@
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@using Newtonsoft.Json
+@using BusinessModel
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HRMS</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script defer src="/static/fontawesome/fontawesome-all.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  
+
+    <style>
+        body {
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+            background-color: #e9ecef;
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #163855;
+            padding-top: 20px;
+            transition: width 0.3s;
+        }
+
+            .sidebar a {
+                padding: 10px 15px;
+                text-decoration: none;
+                font-size: 18px;
+                color: white;
+                display: flex; /* Use flexbox for alignment */
+                align-items: center; /* Center items vertically */
+            }
+
+                .sidebar a i {
+                    font-size: 24px; /* Adjust icon size as needed */
+                    margin-right: 20px; /* Space between icon and text */
+                }
+
+                .sidebar a span {
+                    display: inline; /* Ensure text is displayed */
+                }
+
+                .sidebar a:hover {
+                    background-color: #575d63;
+                }
+
+            .sidebar.collapsed {
+                width: 60px;
+            }
+
+                .sidebar.collapsed a span {
+                    display: none; /* Hide text in collapsed state */
+                }
+
+                .sidebar.collapsed a i {
+                    font-size: 30px; /* Adjust size if needed for the collapsed state */
+                }
+
+
+        .content {
+            margin-left: 250px;
+            width: 200%;
+            transition: margin-left 0.3s;
+        }
+
+            .content.collapsed {
+                margin-left: 60px;
+            }
+
+        /*    .navbar .profile-icon {
+                    width: 52px;
+                    height: 45px;
+                    border-radius: 50%;
+                } */
+
+        .navbar {
+            background-color: #fff;
+        }
+
+        .scrollable-card-body {
+            max-height: 87vh;
+            overflow-y: auto;
+        }
+
+            .scrollable-card-body::-webkit-scrollbar {
+                width: 8px;
+            }
+
+            .scrollable-card-body::-webkit-scrollbar-track {
+                background-color: #f1f1f1;
+            }
+
+            .scrollable-card-body::-webkit-scrollbar-thumb {
+                background-color: #888;
+            }
+
+                .scrollable-card-body::-webkit-scrollbar-thumb:hover {
+                    background-color: #555;
+                }
+    </style>
+    <style>
+
+        .navbar-right {
+            position: absolute;
+            right: 177px;
+            display: flex;
+            align-items: center;
+        }
+
+        #datetime {
+            font-size: 25px;
+            font-weight: 700;
+            margin-bottom: 11px;
+            padding: 5px 10px;
+            /* background-color: #555; */
+            border-radius: 5px;
+        }
+        .custom-profile-section {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+        }
+
+            .custom-profile-section .profiles {
+                position: relative;
+            }
+
+                .custom-profile-section .profiles .icon_wrap {
+                    display: flex;
+                    align-items: center;
+                    cursor: pointer;
+                }
+
+                    .custom-profile-section .profiles .icon_wrap img {
+                        width: 40px;
+                        border-radius: 50%;
+                        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+                    }
+
+                .custom-profile-section .profiles .name {
+                    display: inline-block;
+                    margin: 0 10px;
+                    font-weight: bold;
+                    font-size: 1.1rem;
+                    color: #333;
+                }
+
+                .custom-profile-section .profiles .profile_dd {
+                    position: absolute;
+                    top: 48px;
+                    right: 0;
+                    background: #fff;
+                    border: 1px solid #e6e9f0;
+                    width: 250px;
+                    display: none;
+                    border-radius: 10px;
+                    box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.1);
+                    transition: all 0.3s ease-in-out;
+                }
+
+                .custom-profile-section .profiles.active .profile_dd {
+                    display: block;
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+
+                .custom-profile-section .profiles .profile_dd ul {
+                    padding: 10px 0;
+                }
+
+                .custom-profile-section .profiles .profile_dd .employee-info {
+                    text-align: center;
+                    margin-bottom: 10px;
+                    padding: 10px;
+                    background-color: #f8f9fa;
+                    border-radius: 5px;
+                    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+                }
+
+                    .custom-profile-section .profiles .profile_dd .employee-info .info-item {
+                        margin: 5px 0;
+                        padding: 0;
+                    }
+
+                    .custom-profile-section .profiles .profile_dd .employee-info .designation {
+                        font-size: 1.1rem;
+                        margin-bottom: 5px;
+                        font-weight: bold;
+                        color: #3b80f9;
+                    }
+
+                    .custom-profile-section .profiles .profile_dd .employee-info .employee-id {
+                        color: #555;
+                    }
+
+                .custom-profile-section .profiles .profile_dd ul li {
+                    padding: 10px 25px;
+                    transition: background 0.3s;
+                }
+
+                    .custom-profile-section .profiles .profile_dd ul li a {
+                        display: flex;
+                        align-items: center;
+                        color: #333;
+                        font-size: 1rem;
+                        transition: color 0.3s ease-in-out;
+                    }
+
+                        .custom-profile-section .profiles .profile_dd ul li a .picon {
+                            display: inline-block;
+                            width: 30px;
+                            text-align: center;
+                            color: #3b80f9;
+                            font-size: 1.2rem;
+                            margin-right: 10px;
+                            transition: color 0.3s;
+                        }
+
+                    .custom-profile-section .profiles .profile_dd ul li:hover {
+                        background-color: #f0f5ff;
+                    }
+
+                        .custom-profile-section .profiles .profile_dd ul li:hover a {
+                            color: #3b80f9;
+                        }
+
+                            .custom-profile-section .profiles .profile_dd ul li:hover a .picon {
+                                color: #6593e4;
+                            }
+
+                    .custom-profile-section .profiles .profile_dd ul li .btn {
+                        display: block;
+                        background: #3b80f9;
+                        color: #fff;
+                        text-align: center;
+                        border-radius: 5px;
+                        padding: 8px;
+                        font-weight: 500;
+                        margin: 15px auto 10px;
+                        width: 80%;
+                        transition: background 0.3s ease-in-out;
+                    }
+
+                        .custom-profile-section .profiles .profile_dd ul li .btn:hover {
+                            background-color: #6593e4;
+                        }
+
+        /* Styling for Employee details section */
+        .employee-details .detail {
+            padding: 5px 0;
+            display: flex;
+            align-items: center;
+            color: #333;
+            font-size: 0.9rem;
+        }
+
+        .employee-details .picon {
+            display: inline-block;
+            width: 30px;
+            text-align: center;
+            color: #3b80f9;
+            font-size: 1.1rem;
+            margin-right: 10px;
+        }
+
+        .employee-details strong {
+            color: #3b80f9;
+        }
+
+        .profile_ul {
+            list-style-type: none; /* Remove list dots */
+            padding: 0; /* Remove default padding */
+            margin: 0; /* Remove default margin */
+        }
+    </style>
+
+</head>
+<body class="">
+    <div class="sidebar" id="sidebar" style="box-shadow:0 14px 28px rgba(0,0,0,.25),0 10px 10px rgba(0,0,0,.22)!important;">
+        <a href="#">
+            <img src="~/letter-h.png" style="width:40px;margin-left:-4px;"> <span style="margin-left:5px;">HRMS Portal</span>
+        </a>
+        <div style="margin-top:56px;">
+            <a asp-action="Index" asp-controller="Dashboard">
+                <i class="fa fa-tachometer"></i>
+                <span>Dashboard</span>
+            </a>
+            <div id="accordion">
+                <div>
+                    <div class="card-header">
+                        <a data-bs-toggle="collapse" href="#collapseOne">
+                            <i class="fa fa-user"></i><span>Profile</span>
+
+                        </a>
+                    </div>
+                    <div id="collapseOne" class="collapse" data-bs-parent="#accordion">
+                        <div class="card-body">
+                            <a asp-controller="ManageResourceDetails" asp-action="ManageResource"><i class="fa fa-circle-o" aria-hidden="true" style="font-size : 17px;"></i><span style="font-family: fangsong; text-decoration: underline; font-size :17px;">People</span></a>
+                        </div>
+
+                        <div class="card-body">
+                            <a asp-controller="Attendence" asp-action="EmployeeAttendence"><i class="fa fa-circle-o" aria-hidden="true" style="font-size : 17px;"></i><span style="font-family: fangsong; text-decoration: underline; font-size :17px;">Attendence</span></a>
+                        </div>
+
+                        <div class="card-body">
+                            <a asp-controller="Leave" asp-action="EmployeeLeave"><i class="fa fa-circle-o" aria-hidden="true" style="font-size : 17px;"></i><span style="font-family: fangsong; text-decoration: underline; font-size :17px;">Leaves</span></a>
+                        </div>
+
+                        <div class="card-body">
+                            <a asp-controller="Payslip" asp-action="EmployeePayslip"><i class="fa fa-circle-o" aria-hidden="true" style="font-size : 17px;"></i><span style="font-family: fangsong; text-decoration: underline; font-size :17px;">Payslip</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <a asp-controller="ManageResourceDetails" asp-action="ManageResource"><i class="fa fa-cog"></i><span>Configuration</span></a>
+            <a asp-action="Logout" asp-controller="Logout"><i class="fa fa-sign-out"></i><span>Logout</span></a>
+        </div>
+
+    </div>
+
+    <div class="content" id="content">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="box-shadow:0px 9px 5px lightblue;margin-left:1px; height : 9%; ">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div>
+                <i class="fa fa-bars" onclick="toggleSidebar()" style="margin-left:10px;"></i>
+            </div>
+
+            <div class="navbar-right">
+                <span id="datetime">00:00:00</span>
+            </div>
+
+            <div class="custom-profile-section">
+                <div class="profiles">
+                    <div class="icon_wrap">
+
+                        @* Retrieve session data *@
+                        @{
+                            var loginCredentialsJson = HttpContextAccessor.HttpContext.Session.GetString("UserDetails");
+                            LoginCredentials loginUserData = null;
+
+                            // If session data exists, deserialize it
+                            if (!string.IsNullOrEmpty(loginCredentialsJson))
+                            {
+                                loginUserData = JsonConvert.DeserializeObject<LoginCredentials>(loginCredentialsJson);
+                            }
+                        }
+
+                        <img src="~/copywriter-digital-avatar-generative-ai_934475-9260.jpg" alt="profile_pic">
+                        <span class="name">@loginUserData.LoginName</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+
+                    <div class="profile_dd" style="box-shadow : 1px 1px 2px 2px #e2d4d4;">
+                        <div class="employee-info">
+                            <p class="info-item">
+                                <strong class="designation">@loginUserData.RoleName</strong>
+                            </p>
+                            <strong class="info-item">
+                                <p class="employee-id">EMP2025</p>
+                            </strong>
+                        </div>
+
+                        <ul class="profile_ul">
+                            <li class="profile_li">
+                                <a class="profile" asp-controller="ManageResourceDetails" asp-action="ManageResource">
+                                    <span class="picon">
+                                        <i class="fas fa-user-alt"></i>
+                                    </span>Profile
+                                </a>
+                            </li>
+                            <li><a class="logout" asp-action="Logout" asp-controller="Logout"><span class="picon"><i class="fas fa-sign-out-alt"></i></span>Logout</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+        </nav>
+        <main role="main" class="container">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            var sidebar = document.getElementById("sidebar");
+            var content = document.getElementById("content");
+            sidebar.classList.toggle("collapsed");
+            content.classList.toggle("collapsed");
+        }
+        function updateTime() {
+            let timeElement = document.getElementById("datetime");
+
+            setInterval(() => {
+                let now = new Date();
+
+                let hours = String(now.getHours()).padStart(2, '0');
+                let minutes = String(now.getMinutes()).padStart(2, '0');
+                let seconds = String(now.getSeconds()).padStart(2, '0');
+
+                let formattedTime = `${hours}:${minutes}:${seconds}`;
+
+                timeElement.textContent = formattedTime;
+            }, 1000);
+        }
+
+        window.onload = updateTime;
+
+
+    </script>
+
+    <script>
+        $(".custom-profile-section .profiles .icon_wrap").click(function () {
+            $(this).parent().toggleClass("active");
+        });
+    </script>
+</body>
+@RenderSection("Scripts", required: false)
+</html>

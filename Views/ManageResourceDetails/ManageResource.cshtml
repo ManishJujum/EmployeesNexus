@@ -1,0 +1,254 @@
+﻿@model IEnumerable<BusinessModel.EmployeeProfileDetails>
+
+@{
+    ViewBag.Title = "Manage Resource";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+<div class="container pt-5">
+    <div class="row align-items-center mb-3 dropdownlist">
+        <div class="col-md-3">
+            <select id="DepartmentId" class="form-control form-select">
+                <option value="">Select Department</option>
+                @foreach (var org in ViewBag.Department)
+                {
+                    <option value="@org.DepartmentId">@org.DepartmentName</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-3">
+            <select id="RoleId" class="form-control form-select">
+                <option value="0">Select Roles</option>
+                @foreach (var org in ViewBag.Roles)
+                {
+                    <option value="@org.RoleId">@org.RoleName</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-3">
+            <input type="text" id="ResDetails" placeholder="Search by employee details" class="form-control" />
+        </div>
+        <div class="col-md-2">
+            <button id="SearchResourceDetails" class="btn btn-primary w-50">Search</button>
+        </div>
+        <div class="col-md-1">
+            <form method="get" asp-controller="ManageResourceDetails" asp-action="AddResourceDetails">
+                <button type="submit" class="btn btn-primary btnCreate">Create</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="table-container">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Employee</th>
+                <th>Department</th>
+                <th>Role</th>
+                <th>Reporting To</th>
+                <th>Contact</th>
+                <th>Address</th>
+                <th>JobStatus</th>
+                <th>EmployeeStatus</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="overflowTest">
+            @foreach (var item in Model)
+            {
+                <tr data-department="@item.DepartmentId" data-role="@item.RoleId">
+                    <td>@item.Id</td>
+                    <td>@item.ResourceName</td>
+                    <td>@item.DepartmentName</td>
+                    <td>@item.RoleName</td>
+                    <td>@item.ReportingManagerName</td>
+                    <td>
+                        <i class="fa fa-envelope" id="icons"></i> @item.Email<br />
+                        <i class="fa fa-phone" id="icons"></i> @item.Mobile<br />
+                        <i class="fa fa-fax" id="icons"></i> 51515FFDF<br />
+                    </td>
+                    <td>
+                        <i class="fa fa-map-marker" id="icons"></i> Maharashtra<br />
+                        <i class="fa fa-building" id="icons"></i> @item.City<br />
+                        <i class="fa fa-map-pin" id="icons"></i> @item.Pincode
+                    </td>
+                    <td style="color:@(item.EmployeeStatus == "Active" ? "darkblue" : "darkred"); font-weight : bolder; text-align:@(item.EmployeeStatus == "Active" ? "center" : "");">
+                        @item.EmployeeStatus
+                    </td>
+                    <td style="color:@(item.CurrentJobStatus == "Permnent" ? "darkblue" : "green"); font-weight : bolder;">
+                        @item.CurrentJobStatus
+                    </td>
+                    <td>
+                        <a title="Edit" asp-controller="ManageResourceDetails" asp-action="UpdateResourceDetails" asp-route-Id="@item.Id">
+                            <i class='fa fa-pencil' id="btnEdit"></i>
+                        </a>
+                        <a data-bs-toggle="modal" data-bs-target="#myModal" data-id="@item.Id" title="Delete">
+                            <i class='fa fa-trash' id="btnDelete"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- Delete Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete Confirmation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete this resource?
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnDelete" class="btn btn-success" data-bs-dismiss="modal">Yes</button>
+                <button type="button" id="btnCancle" class="btn btn-danger" data-bs-dismiss="modal">No</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+
+ 
+        // Event handler for filtering
+        $('#DepartmentId, #RoleId').change(function () {
+            debugger;
+            var selectedDepartment = $('#DepartmentId').val();
+            var selectedRole = $('#RoleId').val();
+
+            // Filter table rows
+            $('#overflowTest tr').filter(function () {
+                var departmentMatches = selectedDepartment ? $(this).data('department') == selectedDepartment : true;
+                var roleMatches = selectedRole && selectedRole != "0" ? $(this).data('role') == selectedRole : true;
+
+                return departmentMatches && roleMatches;
+            }).show(); // Show matching rows
+
+            $('#overflowTest tr').filter(function () {
+                var departmentMatches = selectedDepartment ? $(this).data('department') == selectedDepartment : true;
+                var roleMatches = selectedRole && selectedRole != "0" ? $(this).data('role') == selectedRole : true;
+
+                return !(departmentMatches && roleMatches);
+            }).hide(); // Hide non-matching rows
+        });
+
+        $('#SearchResourceDetails').click(function () {
+            var searchValue = $('#ResDetails').val().toLowerCase(); // Get the search input and convert to lowercase
+
+            $('#overflowTest tr').filter(function () {
+                $(this).toggle(
+                    $(this).text().toLowerCase().indexOf(searchValue) > -1 // Check if row contains the search value
+                );
+            });
+        });
+
+        var resourceid;
+
+        $('a[data-bs-toggle="modal"]').on('click', function () {
+            resourceid = $(this).data('id');  // Capture the resource ID
+            console.log("ID of the resource to be deleted: " + resourceid);
+
+            // Optionally store it in a data attribute of the modal if needed
+            $('#myModal').data('resource-id', resourceid);
+        });
+
+        $('#btnDelete').click(function () {
+            debugger;
+            // Ensure the resourceId is available
+            if (resourceid) {
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("DeleteResourceDetails", "ManageResourceDetails")',
+                    data: { resourceid: resourceid },  // Pass resourceId as an object
+                    success: function (response) {
+                        if (response) {
+                            // Assuming the response is a list of resources
+                            alert('Resource deleted successfully.');
+                            // Optionally update the UI here (e.g., refresh the resource list)
+                        } else {
+                            alert('Error: Something went wrong.');
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        alert('An error occurred: ' + error);
+                    }
+                });
+            } else {
+                alert('No resource ID available for deletion.');
+            }
+        });
+
+    });
+</script>
+
+<!-- Styling -->
+<style>
+    #btnEdit {
+        font-size: 20px;
+        color: red;
+        cursor: pointer;
+    }
+
+    #icons {
+        color : gray;
+    }
+
+    .table-container
+    {
+        overflow-y: scroll;
+        height: 487px;
+        border: 1px solid #ccc;
+        color: white;
+    }
+
+    .btnCreate {
+        background: #215582;
+        width: 116%;
+        cursor: pointer;
+    }
+
+    #SearchResourceDetails
+    {
+        background: #215582;
+        cursor: pointer;
+    }
+
+    .dropdownlist {
+        margin-left: -27px;
+        position: static;
+
+    }
+
+    .modal-header {
+        background-color: #275e8c;
+        color: white;
+    }
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+        border: 1px solid #ddd;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2
+    }
+</style>
