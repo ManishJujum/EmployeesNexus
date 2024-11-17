@@ -1,0 +1,73 @@
+﻿@model BusinessModel.EmployeeProfileDetails
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@using (Html.BeginForm("ImageUpload", "ManageResourceDetails", FormMethod.Post, new { id = "imageUploadForm", enctype = "multipart/form-data" }))
+{
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <input type="text" placeholder="Resource Name" asp-for="ResourceName" class="form-control" />
+        </div>
+        <div class="col-md-4">
+            <input type="email" placeholder="Email" asp-for="Email" class="form-control" />
+        </div>
+        <div class="col-md-4">
+            <input type="text" placeholder="Mobile" asp-for="Mobile" class="form-control" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <input type="text" placeholder="Pincode" asp-for="Pincode" class="form-control" />
+        </div>
+        <div class="col-md-4">
+            <input type="text" placeholder="City" asp-for="City" class="form-control" />
+        </div>
+        <div class="col-md-4">
+            <input type="text" placeholder="State" asp-for="state" class="form-control" />
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <div class="form-group">
+                <label for="imageFile">Select Image:</label>
+                <input type="file" name="imageFile" id="imageFile" class="form-control" />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="text-right" style="margin-top:31px;">
+                <button type="submit" class="btn btn-primary btn-sm">Save</button>
+            </div>
+        </div>
+    </div>
+    <img src="@Url.Action("GetImage", "ManageResourceDetails", new { id = Model.Id })" alt="Profile Image" />
+}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Handle form submission via AJAX
+        $(document).on('submit', '#imageUploadForm', function (e) {
+            e.preventDefault(); // Prevent the form from submitting normally
+
+            var formData = new FormData(this); // Create a FormData object
+
+            $.ajax({
+                url: $(this).attr('action'), // Use the form's action attribute as the URL
+                type: 'POST',
+                data: formData,
+                processData: false, // Important: Prevent jQuery from automatically transforming the data into a query string
+                contentType: false, // Important: Prevent jQuery from setting contentType
+                success: function (response) {
+                    // Handle success
+                    console.log('Form submitted successfully.');
+                    $('#imageUploadModal').modal('hide'); // Hide the modal on success
+                },
+                error: function (xhr, status, error) {
+                    // Handle error
+                    console.error('An error occurred:', error);
+                }
+            });
+        });
+    });
+</script>

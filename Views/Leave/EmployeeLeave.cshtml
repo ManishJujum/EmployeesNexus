@@ -1,0 +1,357 @@
+﻿@model BusinessModel.LeaveMaster
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int counter = 1;
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<div class="container">
+
+    <div class="d-flex mb-3">
+        <span class="status-badge submitted me-2">Pending Leaves @ViewBag.Pending</span>
+        <span class="status-badge approved me-2">Reject Leaves @ViewBag.Rejected</span>
+        <span class="status-badge rejected me-2">Available Leaves @ViewBag.Available</span>
+        <span class="status-badge rejected me-2">Approved Leaves @ViewBag.Approved</span>
+    </div>
+
+    <table class="table table-striped table-hover" id="tbl">
+        <thead>
+            <tr>
+                <th class="text-white">#</th>
+                <th class="text-white">Leave Type</th>
+                <th class="text-white">Leave Reason</th>
+                <th class="text-white">LeaveStartDate</th>
+                <th class="text-white">LeaveEndDate</th>
+                <th class="text-white">AppliedDate</th>
+                <th class="text-white">Approver</th>
+                <th class="text-white">LeaveStatus</th>
+                <th class="text-white">Attachment</th>
+            </tr>
+        </thead>
+        <tbody id="resourceTable">
+            @foreach (BusinessModel.LeaveMaster item in ViewBag.leaveMasterslist)
+            {
+                <tr>
+                    <td>@counter</td>
+                    <td>@item.LeaveType</td>
+                    <td>@item.LeaveReason</td>
+                    <td>@item.LeaveStartDate</td>
+                    <td>@item.LeaveEndDate</td>
+                    <td>@item.AppliedDate</td>
+                    <td>@item.Approver</td>
+                    <td class="Status">@item.LeaveStatus</td>
+                    <td>
+                        @if (item.AttachmentBytes != null && item.AttachmentBytes.Length > 0)
+                        {
+                            <a href="@Url.Action("DownloadFile", "Leave", new { id = item.LeaveID })">Download</a>
+                        }
+                        else
+                        {
+                            <span>No attachment</span>
+                        }
+                    </td>
+                </tr>
+                counter++;
+            }
+        </tbody>
+    </table>
+
+    <div class="card shadow-sm border-0 leaveDiv">
+        <div class="card-header text-white txt">
+            <p class="mb-0">
+                <i class="fa fa-user-circle"></i>
+                <span class="spanLeave">Apply Leave</span>
+            </p>
+        </div>
+
+        <div class="card-body mt-3">
+            <div class="row">
+                <!-- Left Side: Form Fields -->
+                    <div class="col-md-7">
+                        <form asp-action="Create" asp-controller="Leave" method="post" enctype="multipart/form-data">
+                        <div class="row mb-3">
+                            <div class="col-md-12">
+                                <select class="form-control Leavelist" name="leaveTypeId">
+                                    <option value="0">Select</option>
+                                    @foreach (var org in ViewBag.LeaveTypes)
+                                    {
+                                        <option value="@org.LeaveID">@org.LeaveType</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <input type="date" class="form-control Leavelist"  name="leaveStartDate" />
+                            </div>
+
+                            <div class="col-md-6">
+                                <input type="date" class="form-control Leavelist" name="leaveEndDate" />
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <input type="text" placeholder="Contact Details" class="form-control Leavelist" />
+                            </div>
+
+                            <div class="col-md-6">
+                                <input type="file" placeholder="Attachment" class="form-control Leavelist" name="attachment" />
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <textarea class="form-control rounded Leavelist" rows="2" placeholder="Reason" name="leaveReason"></textarea>
+                            </div>
+                            <div class="col-md-6 btnDiv">
+                                <button type="submit" class="btn btn-primary rounded btnApprovalSend">Apply & Send for approval</button>
+                            </div>
+                        </div>
+                    </form>
+                    </div>
+                   
+                <!-- Right Side: Calendar -->
+                <div class="col-md-5">
+                    <div class="attendance-info bg-light">
+                        <div class="d-flex justify-content-between align-items-center btnNxtPrev">
+                            <a class="btn btn-light prevnext" href="@Url.Action("EmployeeLeave", new { year = ViewBag.CurrentYear, month = ViewBag.CurrentMonth - 1 })">&laquo; Prev</a>
+                            <h6>@ViewBag.monthname  @ViewBag.CurrentYear</h6>
+                            <a class="btn btn-light prevnext" href="@Url.Action("EmployeeLeave", new { year = ViewBag.CurrentYear, month = ViewBag.CurrentMonth + 1 })">Next &raquo;</a>
+                        </div>
+                        <table class="table table-bordered text-center mt-2 tblCalendar">
+                            <thead>
+                                <tr>
+                                    <th class="text-white bg-primary">Sun</th>
+                                    <th class="text-white bg-primary">Mon</th>
+                                    <th class="text-white bg-primary">Tue</th>
+                                    <th class="text-white bg-primary">Wed</th>
+                                    <th class="text-white bg-primary">Thu</th>
+                                    <th class="text-white bg-primary">Fri</th>
+                                    <th class="text-white bg-primary">Sat</th>
+                                </tr>
+                            </thead>
+                            <tbody id="calendarBody">
+                                @{
+                                    // Get the dates from ViewBag
+                                    var allDates = ViewBag.AllDates as List<DateTime>;
+                                    // Group dates by week (7 days)
+                                    var weeks = new List<List<DateTime>>();
+
+                                    // Start a new week
+                                    var currentWeek = new List<DateTime>();
+                                    // Find the first day of the month
+                                    DateTime firstDate = new DateTime(ViewBag.CurrentYear, ViewBag.CurrentMonth, 1);
+                                    int startDay = (int)firstDate.DayOfWeek; // Get the starting day of the week
+
+                                    // Add empty cells for the previous month's dates
+                                    for (int i = 0; i < startDay; i++)
+                                    {
+                                        currentWeek.Add(DateTime.MinValue); // Add empty dates for alignment
+                                    }
+
+                                    // Loop through each date in allDates
+                                    foreach (var date in allDates)
+                                    {
+                                        currentWeek.Add(date); // Add the current date to the week
+
+                                        // Check if the week is complete (7 days)
+                                        if (currentWeek.Count == 7)
+                                        {
+                                            weeks.Add(currentWeek); // Add the week to the list of weeks
+                                            currentWeek = new List<DateTime>(); // Start a new week
+                                        }
+                                    }
+
+                                    // Add remaining dates if any
+                                    if (currentWeek.Count > 0)
+                                    {
+                                        while (currentWeek.Count < 7) // Fill the week to 7 days
+                                        {
+                                            currentWeek.Add(DateTime.MinValue); // Add empty dates for alignment
+                                        }
+                                        weeks.Add(currentWeek); // Add the last week
+                                    }
+                                }
+
+                                @foreach (var week in weeks)
+                                {
+                                    <tr>
+                                        @foreach (var date in week)
+                                        {
+                                            <td class="currentdate" id="@date.Date" style="@(date.Date == DateTime.Now.Date ? "background-color: #0000e255;" : (date.DayOfWeek == DayOfWeek.Saturday || date.DayOfWeek == DayOfWeek.Sunday ? "font-weight: bolder;" : "")); font-family :'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; cursor: pointer;">
+                                                @if (date != DateTime.MinValue) // Check if date is valid
+                                                {
+                                                    @date.Day
+                                                }
+                                            </td>
+                                        }
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<style>
+    .tblCalendar {
+        border: 1px solid #dee2e6;
+    }
+
+    .prevnext
+    {
+        background: aqua;
+    }
+
+    .btnNxtPrev {
+        margin-top: -4px;
+    }
+
+    .btnDiv
+    {
+        margin-top: 22px;
+    }
+
+    .btnApprovalSend
+    {
+        font-weight :  bolder;
+        font-size: 14px;
+        float: inline-end;
+        background: linear-gradient(114deg, rgba(0,210,255,1) 4%, rgba(2,0,36,1) 100%);
+    }
+
+    .Leavelist   
+    {
+        font-size: 14px;
+    }
+
+    .spanLeave
+    {
+        font-size: 15px;
+    }
+
+    .txt
+    {
+        background-color: #275e8c !important;
+    }
+
+    .leaveDiv
+    {
+        margin-top: 10px;
+    }
+
+    .Status
+    {
+        color: orangered;
+        font-weight: bolder;
+    }
+
+    .container
+    {
+        margin-top : 20px;
+    }
+
+    .logged {
+        background-color: #ffeeba;
+    }
+
+    .submitted {
+        background-color: #cce5ff;
+    }
+
+    .approved {
+        background-color: #d4edda;
+    }
+
+    .rejected {
+        background-color: #f8d7da;
+    }
+
+    .status-badge {
+        display: inline-block;
+        padding: 0.5rem;
+        border-radius: 10px;
+        font-size: 0.9rem;
+    }
+
+    .attendance-info h5, .attendance-info h6 {
+        margin-top: 10px;
+    }
+
+    .attendance-info {
+        margin-top: -14px;
+    }
+
+    thead th {
+        background-color: #275e8c !important;
+        height: 10px;
+    }
+
+    .bg-primary {
+        background-color: #007bff !important;
+    }
+
+    .card {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+    }
+
+    .table {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: #f1f1f1;
+    }
+
+
+    thead th {
+        background-color: #275e8c;
+        color: white;
+        font-family: math;
+        font-size: 14px;
+    }
+
+    tbody tr td {
+        font-family: auto;
+        font-size: 14px;
+    }
+
+    .display-6 {
+        font-size: 19px;
+        margin-top: 6px;
+    }
+
+    .highlight-card {
+        background-color: #f1f1f1;
+        text-align: center;
+        border-radius: 10px;
+    }
+
+    .dashboard-card {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .dashboard-card-MonthlyHolidays {
+        text-align: center;
+        border-radius: 25px;
+    }
+
+    .grid-item {
+        text-align: center;
+        font-size: 15px;
+        border-radius: 5px; /* Optional: adds rounded corners to cards */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: adds a subtle shadow for depth */
+    }
+</style>

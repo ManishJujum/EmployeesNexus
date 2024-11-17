@@ -1,0 +1,479 @@
+﻿@model IEnumerable<BusinessModel.AttendanceRecord>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8 fistSection">
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <div class="grid-item item1 highlight-card p-4 dashboard-card-MonthlyHolidays card-hover TotalWorkingHours">
+                        <h7>Working Hours</h7>
+                        <p class="display-6">@ViewBag.TotalWorkingHours hrs</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="grid-item item1 highlight-card p-4 dashboard-card-MonthlyHolidays card-hover OvertimeHours">
+                        <h7>Overtime Hours</h7>
+                        <p class="display-6">@ViewBag.OvertimeHours hrs</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="grid-item item1 highlight-card p-4 dashboard-card-MonthlyHolidays card-hover AbsentHours">
+                        <h7>Absent Hours</h7>
+                        <p class="display-6">@ViewBag.AbsentHours hrs</p>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <div class="grid-item item1 highlight-card p-4 dashboard-card-MonthlyHolidays card-hover ProductiveHours">
+                        <h7>Productive Hours</h7>
+                        <p class="display-6">@ViewBag.ProductiveHours hrs</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="grid-item item1 highlight-card p-4 dashboard-card-MonthlyHolidays card-hover LeaveHours">
+                        <h7>Leave Hours</h7>
+                        <p class="display-6">@ViewBag.LeaveHours hrs</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="grid-item item1 highlight-card p-4 dashboard-card-MonthlyHolidays card-hover LateArrivalHours">
+                        <h7>Late Arrival Hours</h7>
+                        <p class="display-6">@ViewBag.LateArrivalHours hrs</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5 secondSection">
+            <canvas id="barChart" width="400" height="200" style="cursor : pointer;"></canvas>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-2 cal">
+    <div class="row">
+        <div class="col-md-6">
+            <!-- Calendar Header -->
+            <div class="attendance-info p-3 attendanceDiv">
+                <div class="d-flex justify-content-between align-items-center prevnxtbtn">
+                    <a id="prev" class="btn btn-light" href="@Url.Action("EmployeeAttendence", new { year = ViewBag.CurrentYear, month = ViewBag.CurrentMonth - 1 })">&laquo; Prev</a>
+                    <h6>@ViewBag.monthname  @ViewBag.CurrentYear</h6>
+                    <a id="nxt"  class="btn btn-light" href="@Url.Action("EmployeeAttendence", new { year = ViewBag.CurrentYear, month = ViewBag.CurrentMonth + 1 })">Next &raquo;</a>
+                </div>
+                <table class="table table-bordered text-center mt-2 tbl">
+                    <thead>
+                        <tr>
+                            <th class="text-white bg-primary">Sun</th>
+                            <th class="text-white bg-primary">Mon</th>
+                            <th class="text-white bg-primary">Tue</th>
+                            <th class="text-white bg-primary">Wed</th>
+                            <th class="text-white bg-primary">Thu</th>
+                            <th class="text-white bg-primary">Fri</th>
+                            <th class="text-white bg-primary">Sat</th>
+                        </tr>
+                    </thead>
+                    <tbody id="calendarBody">
+                        @{
+                            // Get the dates from ViewBag
+                            var allDates = ViewBag.AllDates as List<DateTime>;
+                            // Group dates by week (7 days)
+                            var weeks = new List<List<DateTime>>();
+
+                            // Start a new week
+                            var currentWeek = new List<DateTime>();
+                            // Find the first day of the month
+                            DateTime firstDate = new DateTime(ViewBag.CurrentYear, ViewBag.CurrentMonth, 1);
+                            int startDay = (int)firstDate.DayOfWeek; // Get the starting day of the week
+
+                            // Add empty cells for the previous month's dates
+                            for (int i = 0; i < startDay; i++)
+                            {
+                                currentWeek.Add(DateTime.MinValue); // Add empty dates for alignment
+                            }
+
+                            // Loop through each date in allDates
+                            foreach (var date in allDates)
+                            {
+                                currentWeek.Add(date); // Add the current date to the week
+
+                                // Check if the week is complete (7 days)
+                                if (currentWeek.Count == 7)
+                                {
+                                    weeks.Add(currentWeek); // Add the week to the list of weeks
+                                    currentWeek = new List<DateTime>(); // Start a new week
+                                }
+                            }
+
+                            // Add remaining dates if any
+                            if (currentWeek.Count > 0)
+                            {
+                                while (currentWeek.Count < 7) // Fill the week to 7 days
+                                {
+                                    currentWeek.Add(DateTime.MinValue); // Add empty dates for alignment
+                                }
+                                weeks.Add(currentWeek); // Add the last week
+                            }
+                        }
+
+                        @foreach (var week in weeks)
+                        {
+                            <tr>
+                                @foreach (var date in week)
+                                {
+                                    <td class="currentdate" id="@date.Date" style="@(date.Date == DateTime.Now.Date ? "background-color: #0000e255;" : (date.DayOfWeek == DayOfWeek.Saturday || date.DayOfWeek == DayOfWeek.Sunday ? "font-weight: bolder;" : "")); font-family :'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; cursor: pointer;">
+                                        @if (date != DateTime.MinValue) // Check if date is valid
+                                        {
+                                            @date.Day
+                                        }
+                                    </td>
+                                }
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <!-- Attendance Details with Pie Chart -->
+            <div class="attendance-info p-3 d-flex AttendancePieChart">
+                <!-- Information Section -->
+                <div class="InformationSection">
+                    <strong class="attendanceInfo">@ViewBag.monthname @ViewBag.CurrentYear</strong>
+                    <p class="attendanceInfo">Shift time: 10:00 to 19:00</p>
+                    <p><strong class="attendanceInfo">Status: </strong><span id="Status"></span></p>
+                    <p><strong class="attendanceInfo">Working Hours: </strong><span id="WorkingHours"></span></p>
+                    <p><strong class="attendanceInfo">Overtime:</strong> <span id="overtime">None</span></p>
+                    <p><strong class="attendanceInfo">Punctuality:</strong> <span id="punctuality">On Time</span></p>
+                </div>
+
+                <div class="row text-center rowDropdownlist">
+                    <!-- Dropdown list with search -->
+                    <div class="employee-dropdown mb-3 d-flex justify-content-center position-relative employeedropdown">
+                        <!-- Centered name -->
+                        <p class="m-0"><strong><span id="resourcename">John Doe</span></strong></p>
+                    </div>
+                </div>
+
+                <!-- Pie Chart Section -->
+                <div class="PieChartSection">
+                    <canvas id="pieChart" width="200" height="200"></canvas>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    // Bar Chart
+    var ctxBar = document.getElementById('barChart').getContext('2d');
+    var barChart = new Chart(ctxBar, {
+        type: 'bar',
+        data: {
+            labels: @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Select(e => e.EmployeeName))),
+            datasets: [{
+                label: 'Present Days',
+                data: @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Select(e => e.PresentDays))),
+                backgroundColor: 'rgba(54, 162, 235, 0.6)',
+            },
+            {
+                label: 'Absent Days',
+                data: @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Select(e => e.AbsentDays))),
+                backgroundColor: 'rgba(255, 99, 132, 0.6)',
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    // Pie Chart for attendance summary
+    var ctxPie = document.getElementById('pieChart').getContext('2d');
+    var pieChart = new Chart(ctxPie, {
+        type: 'pie',
+        data: {
+            labels: ['Monthly Present Days', 'Monthly Absent Days'],
+            datasets: [{
+                data: [@ViewBag.Present, @ViewBag.absent],
+                backgroundColor: ['#36A2EB', '#FF6384'],
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                }
+            }
+        }
+    });
+
+    $(document).ready(function () {
+        // Function to get attendance status
+        function getAttendanceStatus() {
+            $.ajax({
+                url: '/Attendence/GetAttendenceStatusByRsource', // Update with your controller name
+                type: 'GET',
+                dataType: 'json',
+                success: function (response) {
+                    // Update the status in the span with id 'sts'
+                    $('#sts').text(response ? response.attendenceStatus : 'NA');
+                    $('#resourcename').text(response ? response.resourceName : 'NA');
+                },
+                error: function (xhr, status, error) {
+                    console.error('Error fetching attendance status:', error);
+                    $('#sts').text('Error fetching status');
+                }
+            });
+        }
+
+        // Call the function on page load
+        getAttendanceStatus();
+
+        // Bind click event to each td with class currentdate
+        $(".currentdate").click(function () {
+            debugger;
+            // Get the id attribute of the clicked td
+            var dayId = $(this).attr("id");
+
+            // Define or retrieve resourceid and date values as needed
+            //var resourceid = 1/* Assign resource ID here */;
+            var date = dayId; // Assuming dayId is the current date; modify as necessary
+
+            $.ajax({
+                url: '/Attendence/GetAttendenceStatusByResourceIdCurrentDate', // Update with your controller name
+                data: { date: date },
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    // Update the status in the span with id 'sts'
+                    var Presents = data.present == "" ? "Absent" : "Present";
+                    var WorkingHours = data.totalWorkingHours == "" ? "0:00" : data.totalWorkingHours + ".00";
+                    $('#Status').text(Presents);
+                    $('#WorkingHours').text(WorkingHours);
+
+                    // alert(Presents);
+                    // alert(WorkingHours);
+                },
+                error: function (xhr, status, error) {
+                    console.error('Error fetching attendance status:', error);
+                    $('#sts').text('Error fetching status');
+                }
+            });
+        });
+
+    });
+</script>
+
+<style>
+    #pieChart
+    {
+        margin-top: 55px;
+    }
+
+    .PieChartSection
+    {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: grab;
+    }
+    #resourcename
+    {
+        font-size: larger;
+    }
+    .employeedropdown {
+        width: 100%;
+    }
+
+    .rowDropdownlist {
+        font-size: 13px;
+    }
+
+    .InformationSection
+    {
+        flex: 1;
+        margin-top: 55px;
+    }
+
+    .attendanceInfo
+    {
+        font-size: medium;
+    }
+
+    .AttendancePieChart
+    {
+        background-color: #ffeeba;
+        height: 94%;
+        width: 604px;
+    }
+
+    .tbl
+    {
+        border: 1px solid #dee2e6;
+    }
+
+    #prev
+    {
+        background: aqua;
+    }
+
+    #nxt
+    {
+        background: aqua;
+    }
+
+    .prevnxtbtn
+    {
+        margin-top: -4px;
+    }
+
+    .attendanceDiv
+    {
+        background-color: white;
+        height: 94%;
+    }
+
+    .TotalWorkingHours
+    {
+        background-color: #d4edda;
+    }
+
+    .OvertimeHours {
+        background-color: #cce5;
+    }
+
+    .AbsentHours {
+        background-color: #cce5;
+    }
+
+    .ProductiveHours {
+        background-color: #d4edda;
+    }
+
+    .LeaveHours {
+        background-color: #cce5;
+    }
+
+    .LateArrivalHours {
+        background-color: #cce5;
+    }
+
+    .fistSection
+    {
+        width: 50%;
+        cursor: grab;
+    }
+
+    .secondSection {
+        width: 50%;
+    }
+
+
+    #pieChart {
+        max-height: 200px;
+        max-width: 200px;
+    }
+
+    .bg-primary {
+        background-color: #007bff !important;
+    }
+
+    #barChart {
+        max-height: 271px;
+        max-width: 700px;
+    }
+
+    .display-6 {
+        font-size: 19px;
+        margin-top: 6px;
+    }
+
+    .highlight-card {
+        /*  background-color: #f1f1f1; */
+        text-align: center;
+        /* padding: 10px; */
+        border-radius: 10px;
+    }
+
+    .dashboard-card {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        /* margin-bottom: 20px; */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .dashboard-card-MonthlyHolidays {
+        text-align: center;
+        border-radius: 25px;
+    }
+
+    .grid-item {
+        text-align: center;
+        font-size: 15px;
+        border-radius: 5px; /* Optional: adds rounded corners to cards */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: adds a subtle shadow for depth */
+    }
+
+
+    .table th,
+    .table td {
+        vertical-align: middle;
+        height: 50%;
+    }
+
+    .table .table-primary {
+        background-color: #cfe2ff;
+    }
+
+    .attendance-info {
+        border: 1px solid #e3e6f0;
+        border-radius: 5px;
+    }
+
+        .attendance-info h5, .attendance-info h6 {
+            margin-top: 10px;
+        }
+
+    table {
+        border-radius: 8px;
+    }
+
+    .bg-primary {
+        background-color: #007bff !important;
+    }
+
+    #barChart {
+        max-height: 271px;
+        max-width: 700px;
+    }
+
+    #pieChart {
+        max-height: 200px;
+        max-width: 200px;
+    }
+
+    .attendance-info {
+        border: 1px solid #e3e6f0;
+        border-radius: 5px;
+    }
+</style>
+
+
+
