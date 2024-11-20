@@ -52,3 +52,15 @@
 ![attendance master](https://github.com/user-attachments/assets/8d9b3934-9df7-4df3-9b2a-60626f38b771)
 ![leave master](https://github.com/user-attachments/assets/41f031c8-f606-4405-8abb-dda77a12fbbe)
 ![employee payslip master](https://github.com/user-attachments/assets/cbf1ae7e-2664-47b3-abb3-8d6191907a45)
+
+---
+
+## **Thanks**
+
+If you find this repository useful, then consider to leave a ⭐.
+
+Connect with me
+
+👉 LinkedIn: https://www.linkedin.com/in/manish-jujum-706190191
+
+Thanks a lot 🙂🙂
