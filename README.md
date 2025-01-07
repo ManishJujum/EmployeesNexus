@@ -4,7 +4,7 @@
 
 ---
 
-## **Features**  
+## **Features**
 
 ### 1. **Employee Leave Management**  
 - Allows employees to apply for leave through an intuitive interface.  
